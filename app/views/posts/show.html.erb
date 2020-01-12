@@ -1,0 +1,18 @@
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2">A post by: <strong><%= @post.name %></strong></h2>
+    <hr>
+    <p><%= @post.content %></p>
+    <br>
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+            <%= link_to "Edit", edit_post_path(@post), class: "button is-light" %>
+        </div>
+        <div class="level-item">
+            <%= link_to "Delete", post_path(@post), method: :delete, class: "button is-danger", data: { confirm: "Are you sure?" } %>
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
