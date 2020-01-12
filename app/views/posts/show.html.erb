@@ -16,3 +16,21 @@
     </nav>
   </div>
 </section>
+
+<section class="section comments">
+  <div class="container">
+    <h3 class="subtitle is-4">
+      <strong><%= @post.comments.count %></strong>
+      <% if @post.comments.count == 1  then %>
+        comment
+      <% else %>
+        comments
+      <% end %>
+    </h3>
+    <%= render @post.comments %>
+    <div class="comments-form">
+      <h3 class="subtitle is-3">Leave a reply</h3>
+      <%= render "comments/form" %>
+    </div>
+  </div>
+</section>

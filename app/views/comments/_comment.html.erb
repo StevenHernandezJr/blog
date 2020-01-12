@@ -1,0 +1,6 @@
+<p>
+  <strong><%= comment.name %></strong><br>
+  <%= comment.content %>
+</p>
+
+<%= link_to "Delete", [comment.post, comment], method: :delete, class: "button is-danger is-small", data: { confirm: "Are you sure?" } %>
