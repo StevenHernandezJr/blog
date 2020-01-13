@@ -13,6 +13,52 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://bulma.io">
+          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        </a>
+        <a class="navbar-burger burger" role="button" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <%= link_to "Home", root_path, class: "navbar-item" %>
+          <% if user_signed_in? then %>
+            <%= link_to "Create Post", new_post_path, class: "navbar-item" %>
+          <% end %>
+        </div>
+        <div class="navbar-end">
+          <% if user_signed_in? then %>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <p class="navbar-link">User</p>
+              <div class="navbar-dropdown">
+                <!-- <%= link_to "Account", edit_user_registration_path, class: "navbar-item" %> -->
+                <hr class="navbar-divider">
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "navbar-item" %>
+              </div>
+            </div>
+          <% else %>
+            <%= link_to "Log In", new_user_session_path, class: "navbar-item" %>
+            <div class="navbar-item">
+              <div class="buttons">
+                <%= link_to "Sign Up", new_user_registration_path, class: "button is-light" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>&copy;2020 Steven Hernandez Jr.</p>
+      </div>
+    </footer>
   </body>
 </html>
