@@ -1,15 +1,6 @@
 <%= simple_form_for([@post, @post.comments.build]) do |f| %>
   <div class="field">
     <div class="control">
-      <%= f.input :name,
-                  wrapper: false,
-                  input_html: { class: "input" },
-                  label_html: { class: "label" } %>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="control">
       <%= f.input :content,
                   wrapper: false,
                   input_html: { class: "textarea" },
