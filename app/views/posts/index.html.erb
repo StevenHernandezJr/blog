@@ -1,7 +1,12 @@
 <section class="section">
   <div class="container">
     <h1 class="title is-1">All Posts</h1>
-    <%= link_to "Create new post", new_post_path %>
+    <%= link_to "Sign Up", new_user_registration_path %><br>
+    <%= link_to "Log In", new_user_session_path %><br>
+    <%= link_to "Create new post", new_post_path %><br>
+    <% if user_signed_in? then %>
+      <%= link_to "Log Off", destroy_user_session_path, method: :delete %>
+    <% end %>
   </div>
 </section>
 
@@ -9,7 +14,7 @@
   <div class="container">
     <% @posts.each do |post| %>
       <%= link_to post do %>
-        <h3 class="subtitle is-3"><%= post.name %></h3>
+        <h3 class="subtitle is-3"><%= post.user.name %></h3>
       <% end %>
       <p><%= post.content %></p>
     <% end %>

@@ -1,0 +1,72 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-5">
+
+        <h2 class="title is-2">Sign up</h2>
+
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="field">
+            <div class="control">
+              <%= f.input :name,
+                          required: true,
+                          autofocus: true,
+                          wrapper: false,
+                          input_html: { class: "input" },
+                          label_html: { class: "label" } %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <%= f.input :username,
+                          required: true,
+                          wrapper: false,
+                          input_html: { class: "input" },
+                          label_html: { class: "label" } %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <%= f.input :email,
+                          required: true,
+                          wrapper: false,
+                          input_html: { autocomplete: "email", class: "input" },
+                          label_html: { class: "label" } %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="container">
+              <%= f.input :password,
+                          required: true,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          wrapper: false,
+                          input_html: { autocomplete: "new-password", class: "input" },
+                          label_html: { class: "label" } %>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <%= f.input :password_confirmation,
+                          required: true,
+                          wrapper: false,
+                          input_html: { autocomplete: "new-password", class: "input" },
+                          label_html: { class: "label" } %>
+            </div>
+          </div>
+
+          <%= f.button :submit, "Sign up", class: "button is-info" %>
+        <% end %>
+
+        <br>
+        <%= render "devise/shared/links" %>
+
+      </div>
+    </div>
+  </div>
+</section>
