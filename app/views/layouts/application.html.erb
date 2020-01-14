@@ -34,7 +34,7 @@
         <div class="navbar-end">
           <% if user_signed_in? then %>
             <div class="navbar-item has-dropdown is-hoverable">
-              <p class="navbar-link">User</p>
+              <p class="navbar-link"><%= current_user.name %></p>
               <div class="navbar-dropdown">
                 <!-- <%= link_to "Account", edit_user_registration_path, class: "navbar-item" %> -->
                 <hr class="navbar-divider">

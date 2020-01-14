@@ -1,0 +1,37 @@
+<% @posts.each do |post| %>
+  <div class="box">
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong><%= post.user.name %></strong> <small>@<%= post.user.username %></small><br>
+            <%= post.content %>
+          </p>
+        </div>
+        <% if user_signed_in? then %>
+          <nav class="level">
+            <div class="level-left">
+              <% if current_user.id == post.user.id then %>
+                <%= link_to "Edit", edit_post_path(post), class: "level-item" %>
+                <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, class: "level-item" %>
+              <% end %>
+
+              <%= link_to post_path(post), class: "level-item" do %>
+                <% if post.comments.count == 1 then %>
+                  <p>1 Comment</p>
+                <% else %>
+                  <p><%= post.comments.count %> Comments</p>
+                <% end %>
+              <% end %>
+            </div>
+          </nav>
+        <% end %>
+      </div>
+    </article>
+  </div>
+<% end %>
