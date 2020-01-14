@@ -3,10 +3,10 @@
     <div class="control">
       <%= f.input :content,
                   wrapper: false,
-                  input_html: { class: "textarea" },
-                  label_html: { class: "label" } %>
+                  label: false,
+                  input_html: { class: "textarea" } %>
     </div>
   </div>
 
-  <%= f.button :submit, "Reply", class: "button is-info" %>
+  <%= f.button :submit, "Leave a Comment", class: "button is-info" %>
 <% end %>

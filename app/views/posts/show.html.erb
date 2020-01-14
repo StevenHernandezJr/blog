@@ -1,36 +1,43 @@
 <section class="section">
   <div class="container">
-    <h2 class="title is-2">A post by: <strong><%= @post.user.name %></strong></h2>
-    <hr>
-    <p><%= @post.content %></p>
-    <br>
-    <nav class="level">
-      <div class="level-left">
-        <div class="level-item">
-            <%= link_to "Edit", edit_post_path(@post), class: "button is-light" %>
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+        </p>
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p>
+            <strong><%= @post.user.name %></strong> <small>@<%= @post.user.username %></small><br>
+            <%= @post.content %>
+          </p>
         </div>
-        <div class="level-item">
-            <%= link_to "Delete", post_path(@post), method: :delete, class: "button is-danger", data: { confirm: "Are you sure?" } %>
-        </div>
+        <% if current_user.id == @post.user.id then %>
+          <nav class="level">
+            <div class="level-left">
+              <%= link_to "Edit", edit_post_path(@post), class: "level-item" %>
+              <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "level-item" %>              
+            </div>
+          </nav>
+        <% end %>
+        <% if @post.comments.count == 1 then %>
+          <p><strong>1 Comment</strong></p>
+        <% else %>
+          <p><strong><%= @post.comments.count %> Comments</strong></p>
+        <% end %>
+        <%= render @post.comments %>
       </div>
-    </nav>
-  </div>
-</section>
-
-<section class="section comments">
-  <div class="container">
-    <h3 class="subtitle is-4">
-      <strong><%= @post.comments.count %></strong>
-      <% if @post.comments.count == 1  then %>
-        comment
-      <% else %>
-        comments
-      <% end %>
-    </h3>
-    <%= render @post.comments %>
-    <div class="comments-form">
-      <h3 class="subtitle is-3">Leave a reply</h3>
-      <%= render "comments/form" %>
-    </div>
+    </article>
+    <article class="media">
+      <figure class="media-left">
+        <p class="image is-64x64">
+          <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+        </p>
+      </figure>
+      <div class="media-content">
+        <%= render "comments/form" %>
+      </div>
+    </article>
   </div>
 </section>
