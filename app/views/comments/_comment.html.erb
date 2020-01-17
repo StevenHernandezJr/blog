@@ -14,7 +14,9 @@
     <% if current_user.id == comment.user.id then %>
       <nav class="level">
         <div class="level-left">
-          <%= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "level-item" %>
+          <%= link_to [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" }, class: "level-item", title: "Delete Comment" do %>
+            <span class="icon is-small"><%= fa_icon "trash" %></span>
+          <% end %>
         </div>
       </nav>
     <% end %>

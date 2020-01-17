@@ -16,8 +16,12 @@
         <% if current_user.id == @post.user.id then %>
           <nav class="level">
             <div class="level-left">
-              <%= link_to "Edit", edit_post_path(@post), class: "level-item" %>
-              <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "level-item" %>              
+              <%= link_to edit_post_path(@post), class: "level-item", title: "Edit Post" do %>
+                <span class="icon is-small"><%= fa_icon "edit" %></span>
+              <% end %>
+              <%= link_to post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "level-item", title: "Delete Post" do %>
+                <span class="icon is-small"><%= fa_icon "trash" %></span>
+              <% end %>              
             </div>
           </nav>
         <% end %>
